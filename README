@@ -6,6 +6,9 @@ cat /sys/kernel/mm/transparent_hugepage/enabled
 #Create the following file:
 grub2-editenv - set "$(grub2-editenv - list | grep kernelopts) transparent_hugepage=never"
 
+#Reboot to apply changes
+reboot
+
 #Confirm status of THP is now set to never
 cat /sys/kernel/mm/transparent_hugepage/enabled
 
@@ -23,4 +26,8 @@ vi /etc/security/limits.conf
 *     soft   nofile  65535
 *     hard   nofile  65535 
 
+#Reboot to apply changes
 reboot
+
+#Confirm open files u limits have bee increased
+ulimit -a
