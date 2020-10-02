@@ -1,0 +1,26 @@
+#DISABLE TRANSPARENT HUGE PAGES (THP)
+
+#Check status of THP
+cat /sys/kernel/mm/transparent_hugepage/enabled
+
+#Create the following file:
+grub2-editenv - set "$(grub2-editenv - list | grep kernelopts) transparent_hugepage=never"
+
+#Confirm status of THP is now set to never
+cat /sys/kernel/mm/transparent_hugepage/enabled
+
+
+
+
+
+#INCREASE ULIMITS
+
+#check open files u limits
+ulimit -a
+
+#open limits.conf and add the following lines
+vi /etc/security/limits.conf
+*     soft   nofile  65535
+*     hard   nofile  65535 
+
+reboot
