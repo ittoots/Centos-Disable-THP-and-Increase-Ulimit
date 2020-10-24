@@ -21,6 +21,9 @@ cat /sys/kernel/mm/transparent_hugepage/enabled
 
 #INCREASE ULIMITS
 
+#Swith to root user
+sudo su -
+
 #check open files u limits
 ulimit -a
 
